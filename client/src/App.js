@@ -1,27 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
-import { getFood } from './services/food';
+import { getFood, getFood2 } from './services/food';
 function App() {
   const [food, setFood] = useState([])
-  //  useEffect(() => {
-  //     getFood().then(data => setFood(data))
-  //   }, [])
-  useEffect(() => {
+
+  const getAllFood = () => {
+    console.log("App useEffect called");
     getFood()
       .then(data => setFood(Array.isArray(data) ? data : []))
       .catch(err => {
         console.error('Failed to fetch food:', err);
-        setFood([]);
+        setFood("");
       });
-    },[])
-    console.log(food);
+  }
+  // useEffect(() => {
+  //   console.log("App useEffect called2");
+  //   getFood2()
+  //     .then(data => setFood2(data) ? data : "aaa")
+  //     .catch(err => {
+  //       console.error('Failed to fetch food2:', err);
+  //       setFood2([]);
+  //     });
+  // }, [])
   return (
     <div className="App">
       <div>
-        {food.map((item, idx) => (
-          <div key={idx}>{item.title}</div>
-        ))}
+        <button onClick={getAllFood}>Get Food</button>
       </div>
     </div>
   );

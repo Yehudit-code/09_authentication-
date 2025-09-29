@@ -1,21 +1,23 @@
 import axios from 'axios';
 
-const httpGet = (url) => {
-  return axios.get(url)
-    .then(response => response.data)
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      throw error;
-    });
+const httpGet = async (url) => {
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
 }
 
-const httpPost = (url, data) => {
-  return axios.post(url, data)
-    .then(response => response.data)
-    .catch(error => {
-      console.error('Error posting data:', error);
-      throw error;
-    });
+const httpPost = async (url, data) => {
+  try {
+    const response = await axios.post(url, data);
+    return response.data;
+  } catch (error) {
+    console.error('Error posting data:', error);
+    throw error;
+  }
 }
 
 export { httpGet, httpPost };

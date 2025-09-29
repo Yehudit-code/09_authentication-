@@ -3,11 +3,11 @@ const express = require('express')
 const cors = require('cors');
 const app = express()
 const PORT = process.env.PORT || 3000;
-const foodRouter = require('./routes/route');
+const router = require('./routes/route');
 
 app.use(express.json());
 app.use(cors());
-app.use('/api/food', foodRouter)
+app.use('/api/food', router)
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
