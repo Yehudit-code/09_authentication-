@@ -1,10 +1,10 @@
 const {httpGet} = require('./http')
 
 const getFood = () => {
-  return httpGet('http://localhost:3000/api/food')
+  return httpGet('/food')
 }
 const getFood2 = () => {
-  return httpGet('http://localhost:3000')
+  return httpGet('/')
 }
 
 module.exports = { getFood, getFood2 }

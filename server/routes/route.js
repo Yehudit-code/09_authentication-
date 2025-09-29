@@ -4,8 +4,7 @@ const { foods } = require('../DB/dataBase');
 const { generateToken } = require("../utils/token");
 
 const users = [
-    { username: "admin", password: "1234" },
-    { username: "test", password: "abcd" },
+    { username: "admin", password: "1234" }
 ];
 const tokens = [];
 
