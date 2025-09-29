@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { getFood } from './services/food';
-import { login } from './services/auth';
+import { login, logout } from './services/auth';
 
 function App() {
   const [food, setFood] = useState([])
@@ -24,6 +24,7 @@ function App() {
       <div>
         <button onClick={getAllFood}>Get Food</button>
         <button onClick={handleLogin}>login</button>
+        <button onClick={logout}>logout</button>
       </div>
     </div>
   );
