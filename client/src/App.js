@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getFood } from './services/food';
 import { login, logout } from './services/auth';
 
