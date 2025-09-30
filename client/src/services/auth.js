@@ -1,18 +1,20 @@
 import { httpPost } from "./http.js";
 
 //login
-export const login = (username, password) => {
-  httpPost("/auth/login", { username, password })
-    .then(response => {
-      if (response.token) {
-        localStorage.setItem("token", response.token);
-      } else {
-        console.error("No token in response");
-      }
-    })
-    .catch(error => {
-      console.error("Login error:", error);
-    });
+export const login = async (username, password) => {
+  try {
+    const response = await httpPost("/auth/login", { username, password });
+
+    if (response.token) {
+      localStorage.setItem("token", response.token);
+    } else {
+      console.error("No token in response");
+    }
+    return response;
+  } catch (error) {
+    console.error("Login error:", error.response?.data || error.message);
+    throw error;
+  }
 };
 
 //logout
@@ -24,8 +26,11 @@ export const logout = async () => {
   }
 
   try {
-    const res = await httpPost("/auth/logout", { token });
-    console.log(res.message);
+    const res = await httpPost(
+      "/auth/logout",
+      {}, 
+      { Authorization: `Bearer ${token}` }
+    ); console.log(res.message);
 
     localStorage.removeItem("token");
   } catch (err) {

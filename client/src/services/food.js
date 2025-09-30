@@ -1,7 +1,5 @@
-const {httpGet} = require('./http')
+import { httpGet, setToken } from "./http.js";
 
-const getFood = () => {
-  return httpGet('/food')
-}
+export const setFoodToken = (token) => setToken(token);
 
-module.exports = { getFood }
+export const getFood = () => httpGet("/food");
